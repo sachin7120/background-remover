@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Background Remover</title>
+
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+
+        <div class="container">
+
+            <h1>Background Remover</h1>
+
+            <p>Upload an image and remove its background</p>
+
+            <input
+            type="file"
+            id="fileInput"
+            accept="image/png,image/jpeg,image/webp"
+            >
+
+        <div class="quality-section">
+
+            <label for="quality">Quality</label>
+
+            <select id="quality">
+                <option value="low">Low - Fast</option>
+                <option value="standard" selected>Standard - Recommended</option>
+                <option value="high">High - Best Quality</option>
+            </select>
+        </div>    
+
+            <button id="removeBtn">
+                Remove Background
+            </button>
+
+            <p id="status"></p>
+            <div id="resultContainer">
+
+    <h2>Live Preview</h2>
+
+    <div class="comparison" id="comparison">
+
+        <!-- Original image -->
+        <img
+            id="originalPreview"
+            class="comparison-original"
+            alt="Original image"
+        >
+
+        <!-- Transparent result -->
+        <div
+            id="resultLayer"
+            class="comparison-result"
+        >
+            <img
+                id="resultImage"
+                alt="Background removed"
+            >
+        </div>
+
+        <!-- Vertical slider -->
+        <div
+            id="sliderLine"
+            class="slider-line"
+        >
+            <div class="slider-handle">
+                ↔
+            </div>
+        </div>
+
+        <input
+            type="range"
+            id="comparisonSlider"
+            min="0"
+            max="100"
+            value="50"
+        >
+
+    </div>
+
+    <p id="processingInfo"></p>
+
+    <a
+        id="downloadBtn"
+        href="#"
+        download="background-removed.png"
+    >
+        Download PNG
+    </a>
+
+</div>
+
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

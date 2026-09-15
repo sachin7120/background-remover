@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f5f5f5;
+
+    margin: 0;
+    padding: 40px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+p {
+    font-weight: 400;
+    color: #666;
+}
+
+input {
+    margin: 20px 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+button {
+    display: block;
+
+    margin: 10px auto;
+
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #635bff;
+
+    color: white;
+
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#status {
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+#resultContainer {
+    display: none;
+
+    margin-top: 30px;
+}
+
+#resultContainer h2 {
+    font-weight: 600;
+}
+
+#resultImage {
+    max-width: 100%;
+    max-height: 500px;
+
+    margin: 20px 0;
+}
+
+#downloadBtn {
+    display: inline-block;
+
+    padding: 12px 20px;
+
+    border-radius: 8px;
+
+    background: #222;
+
+    color: white;
+
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+
+    text-decoration: none;
+}
+
+.quality-section {
+    margin: 20px 0;
+}
+
+.quality-section label {
+    display: block;
+    margin-bottom: 8px;
+
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+.quality-section select {
+    padding: 10px 14px;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    font-family: 'Poppins', sans-serif;
+
+    background: white;
+
+    cursor: pointer;
+}
+
+.comparison {
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+
+    margin: 20px 0;
+
+    background: #f5f5f5;
+}
+
+
+/* Original image */
+
+.comparison-original {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    position: relative;
+
+    z-index: 1;
+}
+
+
+/* Transparent-result layer */
+
+.comparison-result {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    z-index: 2;
+
+    clip-path: inset(
+        0 50% 0 0
+    );
+
+    background-color: white;
+
+    background-image:
+        linear-gradient(
+            45deg,
+            #e5e5e5 25%,
+            transparent 25%
+        ),
+        linear-gradient(
+            -45deg,
+            #e5e5e5 25%,
+            transparent 25%
+        ),
+        linear-gradient(
+            45deg,
+            transparent 75%,
+            #e5e5e5 75%
+        ),
+        linear-gradient(
+            -45deg,
+            transparent 75%,
+            #e5e5e5 75%
+        );
+
+    background-size: 24px 24px;
+
+    background-position:
+        0 0,
+        0 12px,
+        12px -12px,
+        -12px 0;
+}
+
+
+/* Processed image */
+
+.comparison-result img {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: fill;
+}
+
+
+/* Slider line */
+
+.slider-line {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    left: 50%;
+
+    width: 3px;
+
+    background: white;
+
+    transform: translateX(-50%);
+
+    z-index: 5;
+
+    pointer-events: none;
+
+    box-shadow:
+        0 0 5px rgba(0, 0, 0, 0.35);
+}
+
+
+/* Slider handle */
+
+.slider-handle {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: white;
+
+    color: #333;
+
+    font-size: 18px;
+
+    box-shadow:
+        0 3px 12px
+        rgba(0, 0, 0, 0.25);
+}
+
+
+/* Invisible slider */
+
+#comparisonSlider {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+
+    opacity: 0;
+
+    cursor: ew-resize;
+
+    z-index: 10;
+}
